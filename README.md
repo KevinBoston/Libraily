@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Getting Started
 
-Things you may want to cover:
+Clone the app
 
-* Ruby version
+``$ git clone https://github.com/KevinBoston/Libraily.git``
 
-* System dependencies
+``$ cd Libraily``
 
-* Configuration
+Install bundled gems
 
-* Database creation
+$ bundle install
 
-* Database initialization
+Setup your database
 
-* How to run the test suite
+`` rails db:migrate ``
 
-* Services (job queues, cache servers, search engines, etc.)
+Seed sample data, featuring Parcs & Rec references:
 
-* Deployment instructions
+`` rails db:seed ``
 
-* ...
+Boot up Rails server:
+
+`` rails s ``
+
+Navigate to localhost:3000 and proceed with instructions. 
