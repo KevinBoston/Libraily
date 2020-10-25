@@ -1,0 +1,71 @@
+<%= form_for @user do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+        </h2>
+  
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% if !current_user %>
+      <%= link_to "Signin with Github", '/auth/github/' %>
+    <% end %>
+  
+    <div class="form-group">
+      <%= f.label :first_name, "First Name:" %>
+      <br>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :last_name, "Last Name:" %>
+      <br>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :username, "Username:" %>
+      <br>
+      <%= f.text_field :username, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, "Email:" %>
+      <br>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+
+   <div class="form-group">
+      <%= f.label :location, "Please select which city you live in:" %>
+      <br>
+      <%= f.collection_select(:location, Library.all.select(:location).distinct, :location, :location, prompt: true) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :bio, "Short bio:" %>
+      <br>
+      <%= f.text_field :bio, class: "form-control" %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :password %>
+      <br>
+      <%= f.password_field :password, class: "form-control" %>
+
+    <div class="form-group">
+      <%= f.label :admin, "Check box if you are a librarian" %>
+      <%= f.check_box :admin, class: "form-check-input" %>
+    </div>
+  
+    <div class="actions">
+      <br/>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  
+  <% end %> 

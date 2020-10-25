@@ -1,0 +1,6 @@
+<%= form_for @check_out do |f| %>
+    <% f.hidden_field @book.id, book_id %>
+    <% f.hidden_field current_user.id, user_id %>
+    <%= f.label :read_terms, "You must promise to return #{@book.title}." %>
+    <%= f.check_box :read_terms %>
+<% end %>

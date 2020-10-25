@@ -1,0 +1,27 @@
+<h2>Confirming Check Out of <%= @book.title %>:</h2>
+
+<%= form_for @check_out do |f| %>
+
+    <% if @check_out.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@check_out.errors.count, "error") %> prohibited this check out from being saved:
+        </h2>
+  
+        <ul>
+        <% @check_out.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.label :book_id, "Confirm that you would like to checkout #{@book.title}:" %>
+    <br>
+    <%= f.label :read_terms, "Confirm that you will return this title." %>
+    <%= f.check_box :read_terms %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :book_id, value: @book.id %>
+
+    <%= f.submit class: "btn btn-primary" %>
+<% end %>

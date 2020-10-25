@@ -1,0 +1,5 @@
+<h1>All the Libraries:</h1>
+
+<% @libraries.each do |lib| %>
+    <li><%= link_to "#{lib.name} Library", library_path(lib) %> - <%= lib.location %> </li>
+<% end %>

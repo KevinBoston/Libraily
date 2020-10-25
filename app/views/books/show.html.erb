@@ -1,0 +1,13 @@
+<h2> <%= @book.title %></h2>
+
+<p>Status: <%= @book.available ? "Not currently available" : "Available" %></p>
+
+<p> From: <%= @book.library.name %> Library</p>
+<p> Genre: <%= @book.genre %></p>
+<p> <%= @book.description %></p>
+<p>
+<% if @book.available %>
+    Please come back to see if this book has returned.
+<% else %>
+    <%= link_to "Check out this book?", checkout_book_path(@book) %>    
+<% end %> </p>

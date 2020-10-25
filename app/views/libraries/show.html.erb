@@ -1,0 +1,7 @@
+<h2><%= "#{@library.name} Library in #{@library.location}" %></h2>
+
+<h3>Titles Available:</h3>
+
+<% @library.books.each do |book| %>
+    <p><%= link_to book.title, book_path(book) %> - <%= book.id %></p>
+<% end %>

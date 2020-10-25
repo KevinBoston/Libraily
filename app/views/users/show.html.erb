@@ -1,0 +1,22 @@
+<% if flash[:message] %>
+  <div class="center alert">
+    <p><%= flash[:message] %></p>
+  </div>
+<% end %>
+
+
+    <% if @user.admin %>
+      <p><strong>ADMIN</strong></p>
+    <% end %>
+    <p>Located in: <%= @user.location %></p>
+    <h2><%= @user.name || @user.username %></h2>
+    <%= link_to "View your current books", users_checkouts_path %>
+
+
+    <p><strong>Bio:</strong> <%= @user.bio %></p>
+
+    <p> <%= link_to "View Libraries", libraries_path %> </p> 
+    <% if @user.admin %>
+      <p><%= link_to "Add a library", new_library_path %> </p>
+    <% end %>
+    <%= link_to "Edit user info", edit_user_path %>

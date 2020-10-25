@@ -1,0 +1,33 @@
+<%= form_for @library do |f| %>
+    <% if @library.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@library.errors.count, "error") %> prohibited this library from being saved:
+        </h2>
+  
+        <ul>
+        <% @library.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="form-group">
+      <%= f.label :name, "Library Name:" %>
+      <br>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+   <div class="form-group">
+      <%= f.label :location, "Please select the city this library is in:" %>
+      <br>
+      <%= f.collection_select(:location, Library.all, :location, :location, prompt: true) %>
+    </div>
+
+    <div class="actions">
+      <br/>
+      <%= f.submit class: "btn btn-primary" %>
+    </div>
+  
+  <% end %> 
