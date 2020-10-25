@@ -13,7 +13,8 @@ class BooksController < ApplicationController
         @book = Book.find(params[:id]) 
         rescue ActiveRecord::RecordNotFound  
             redirect_to '/', flash: {message: "That book doesn't exist."}
-        end
+    end
+
     def new
         @book = Book.new
     end

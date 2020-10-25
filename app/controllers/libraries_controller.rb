@@ -24,7 +24,6 @@ class LibrariesController < ApplicationController
       @books = @library.books.available
       rescue ActiveRecord::RecordNotFound  
         redirect_to '/', flash: {message: "That library doesn't exist."}
-      end
     end
 
 
